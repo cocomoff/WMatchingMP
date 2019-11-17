@@ -6,7 +6,7 @@ import networkx as nx
 from itertools import product
 from gen_wm import weighted_matching_lp
 
-if __name__ == '__main__':
+def sample_graph(Nl, Nr, debug_print=False):
     G = nx.Graph()
     Nl = 3
     Nr = 4
@@ -16,7 +16,14 @@ if __name__ == '__main__':
         G.add_node(r + Nl)
     for l, r in product(range(Nl), range(Nr)):
         wlr = np.random.randint(1, 10)
-        print(l, r, wlr)
+        if debug_print:
+            print(l, r, wlr)
         G.add_edge(l, r, weight=wlr)
+    return G
+
+
+if __name__ == '__main__':
+    Nl, Nr = 3, 4
+    G = sample_graph(Nl, Nr)
     wm = weighted_matching_lp(G)
     print(wm)
