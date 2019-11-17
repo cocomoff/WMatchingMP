@@ -18,7 +18,7 @@ def sample_graph(Nl, Nr, debug_print=False):
         wlr = np.random.randint(1, 10)
         if debug_print:
             print(l, r, wlr)
-        G.add_edge(l, r, weight=wlr)
+        G.add_edge(l, r + Nl, weight=wlr)
     return G
 
 
